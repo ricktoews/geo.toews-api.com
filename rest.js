@@ -4,6 +4,17 @@ const getCountryData = require('./helpers/helpers.js');
 
 const app = express();
 
+// Enable CORS for all routes
+app.use((req, res, next) => {
+  // Set CORS headers
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+
+  // Pass to next layer of middleware
+  next();
+});
+
 app.use(bodyParser.json());
 
 
